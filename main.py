@@ -16,9 +16,9 @@ from selenium.webdriver.support import expected_conditions as EC
 # TODO there is a "get youtube premium tab" in front of useful things sometimes. make a function to get rid of that.
 
 INITIAL_URL = "https://www.youtube.com/watch?v=CpCKkWMbmXU"
-DEPTH = 5
+DEPTH = 3
 NUMBER_RECOMMENDATIONS = 5
-KEY_WORDS = ["hamas", "gaza occupation", "israel war"]
+KEY_WORDS = ["israel palestine war"] # "gaza occupation", "israel war"]
 NUMBER_SEARCH = 2
 
 
@@ -51,6 +51,7 @@ def get_video_title(driver):
 def get_channel(driver):
     channel = wait_for(driver, EC.presence_of_element_located((By.XPATH, "//*[@id=\"text\"]/a")))
     return channel.text
+
 
 def get_views(driver):
     # if the description isn't open yet, though it should
@@ -98,7 +99,8 @@ def get_description(driver):
     else:
         return "No description available"
 
-# TODO the transcript is currently the raw text, with no timestamps.
+
+# the transcript is currently the raw text, with no timestamps.
 def get_transcript(driver):
     # if the description isn't open yet, though it should
     if driver.find_element(By.ID, "expand").is_displayed():
@@ -119,6 +121,7 @@ def get_transcript(driver):
         transcript = "Empty"
 
     return transcript
+
 
 def initial_search(driver):
     initial_urls = []
@@ -280,7 +283,8 @@ def main():
 
     driver.quit()
 
-    nx.write_gexf(graph, "graph.gexf")
+    nx.write_gexf(graph, "graph_hamas.gexf")
+
 
 if __name__ == "__main__":
     main()
