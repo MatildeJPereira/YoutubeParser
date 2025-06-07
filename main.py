@@ -1,9 +1,7 @@
-from os import waitpid
-from tokenize import String
 from urllib.parse import urlparse, parse_qs
 
 from selenium import webdriver
-from selenium.common import NoSuchElementException, TimeoutException
+from selenium.common import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
@@ -18,7 +16,7 @@ from selenium.webdriver.support import expected_conditions as EC
 INITIAL_URL = "https://www.youtube.com/watch?v=CpCKkWMbmXU"
 DEPTH = 3
 NUMBER_RECOMMENDATIONS = 5
-KEY_WORDS = ["israel palestine war"] # "gaza occupation", "israel war"]
+KEY_WORDS = ["gaza war"] # "gaza occupation", "israel war"]
 NUMBER_SEARCH = 2
 
 
@@ -283,7 +281,7 @@ def main():
 
     driver.quit()
 
-    nx.write_gexf(graph, "graph_hamas.gexf")
+    nx.write_gexf(graph, "graph_hamas_3.gexf")
 
 
 if __name__ == "__main__":
