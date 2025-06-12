@@ -3,7 +3,7 @@ import networkx as nx
 from pyvis.network import Network
 import webbrowser
 
-graph = nx.read_gexf('graph.gexf')
+graph = nx.read_gexf('graph_final.gexf')
 
 # Create a pyvis network
 net = Network(height='750px', width='100%', notebook=False, directed=True)
